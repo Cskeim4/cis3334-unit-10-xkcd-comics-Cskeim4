@@ -27,11 +27,14 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
+//Most of our code goes here
 class _MyHomePageState extends State<MyHomePage> {
 
+  //List of comic objects
   List<Comic> xkcdComics = new List();
 
   _MyHomePageState() {
+    //Add comics to the list
     xkcdComics.add( new Comic(844,"https://imgs.xkcd.com/comics/good_code.png","Good Code"));
     xkcdComics.add( new Comic(1513,"https://imgs.xkcd.com/comics/code_quality.png","Code Quality"));
     xkcdComics.add( new Comic(163,"https://imgs.xkcd.com/comics/donald_knuth.png","Donald Knuth"));
@@ -46,7 +49,23 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Text("Display list here"),
+      body: ListView.builder( //Display the comic objects in a list view
+        itemCount: xkcdComics.length,
+        itemBuilder: (BuildContext context, int position){
+          return Card(
+            child: ListTile( //Display the comic objects in a list tile and card for better formatting
+              leading: Text('Number: ${xkcdComics[position].num.toString()}'
+              ),
+              title: Text('Title: ${xkcdComics[position].title}'
+              ),
+              subtitle: Image(image: NetworkImage(xkcdComics[position].img),
+              ),
+            )
+          );
+
+        },
+      ),
     );
   }
+
 }
