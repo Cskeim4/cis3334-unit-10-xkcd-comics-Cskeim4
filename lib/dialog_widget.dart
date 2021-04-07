@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'comic.dart';
 
+//Card Widget Class
+
 //Created automatically with the refactor feature
 class ComicListCardWidget extends StatelessWidget {
 
