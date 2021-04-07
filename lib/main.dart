@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'comic.dart';
+import 'dialog_widget.dart';
 
 void main() {
   runApp(MyApp());
@@ -52,20 +53,12 @@ class _MyHomePageState extends State<MyHomePage> {
       body: ListView.builder( //Display the comic objects in a list view
         itemCount: xkcdComics.length,
         itemBuilder: (BuildContext context, int position){
-          return Card(
-            child: ListTile( //Display the comic objects in a list tile and card for better formatting
-              leading: Text('Number: ${xkcdComics[position].num.toString()}'
-              ),
-              title: Text('Title: ${xkcdComics[position].title}'
-              ),
-              subtitle: Image(image: NetworkImage(xkcdComics[position].img),
-              ),
-            )
-          );
-
+          //Get the Card widget from a separate class
+          return ComicListCardWidget(xkcdComics: xkcdComics[position]);
         },
       ),
     );
   }
 
 }
+
